@@ -19,7 +19,8 @@ const UpdateForm = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/api/user/${id}`);
+                // const response = await axios.get(`http://localhost:3001/api/user/${id}`);
+                const response = await axios.get(`https://usercrudapifullstack.onrender.com/api/user/${id}`);
                 setFormData(response.data);
             } catch (error) {
                 console.error('Error fetching employee data:', error.message);
@@ -41,7 +42,8 @@ const UpdateForm = () => {
         e.preventDefault();
 
         try {
-            await axios.put(`http://localhost:3001/api/user/${id}`, formData);
+            // await axios.put(`http://localhost:3001/api/user/${id}`, formData);
+            await axios.put(`https://usercrudapifullstack.onrender.com/api/user/${id}`, formData);
             navigation(`/employee/${id}`);
         } catch (error) {
             console.error('Error updating employee:', error.message);

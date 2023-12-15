@@ -28,7 +28,8 @@ const EmployeeCharts = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/users');
+        // const response = await axios.get(`http://localhost:3001/api/users`);
+        const response = await axios.get(`https://usercrudapifullstack.onrender.com/api/users`);
         setEmployeeData(response.data);
       } catch (error) {
         console.error('Error fetching employee data:', error.message);
@@ -203,10 +204,10 @@ const EmployeeCharts = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-12 mt-4">
+        {/* <div className="col-md-12 mt-4">
           <h6>Salary Distribution</h6>
           <Scatter data={{ datasets: getSalaryBoxPlotData() }} options={boxPlotOptions} />
-        </div>
+        </div> */}
       </div>
     </div>
 

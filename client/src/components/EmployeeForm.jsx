@@ -67,7 +67,8 @@ const EmployeeForm = () => {
 
     if (validateForm()) {
       try {
-        await axios.post('http://localhost:3001/api/user', employeeData);
+        // await axios.post('http://localhost:3001/api/user', employeeData);
+        await axios.post('https://usercrudapifullstack.onrender.com/api/user', employeeData);
         console.log('Employee Data:', employeeData);
 
         // Reset the form after submission

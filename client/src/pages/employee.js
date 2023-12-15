@@ -10,7 +10,8 @@ const EmployeeDetails = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/api/user/${id}`);
+                // const response = await axios.get(`http://localhost:3001/api/user/${id}`);
+                const response = await axios.get(`https://usercrudapifullstack.onrender.com/api/user/${id}`);
                 setEmployee(response.data);
             } catch (error) {
                 console.error('Error fetching employee data:', error.message);
