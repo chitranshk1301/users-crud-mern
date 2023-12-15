@@ -63,10 +63,43 @@ const EmployeeCharts = () => {
     };
   };
 
+  const getPositionChartData = () => {
+    const positionCounts = {};
+
+    employeeData.forEach((employee) => {
+      positionCounts[employee.position] = (positionCounts[employee.position] || 0) + 1;
+    });
+
+    const labels = Object.keys(positionCounts);
+    const data = Object.values(positionCounts);
+
+    return {
+      labels,
+      datasets: [
+        {
+          data,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
+  };
+
+
   const getDepartmentPieChartData = () => {
     const departmentCounts = {};
 
-    // Count the occurrences of each department
     employeeData.forEach((employee) => {
       departmentCounts[employee.department] = (departmentCounts[employee.department] || 0) + 1;
     });
@@ -146,25 +179,37 @@ const EmployeeCharts = () => {
     },
   };
 
-  // Check if employeeData is empty before rendering
+  // If no data then loading...
   if (employeeData.length === 0) {
-    return <div>Loading...</div>; // You can replace this with a loading spinner or any other loading indicator
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-5">
       <div className="row">
         <div className="col-md-6">
+          <h6>Employee's age Distribution</h6>
           <Bar data={getAgeDistributionData()} />
         </div>
         <div className="col-md-6">
-          <Pie data={getDepartmentPieChartData()} />
+          <div className="row">
+            <div className="col-md-6">
+              <h6>Departments Distribution</h6>
+              <Pie data={getDepartmentPieChartData()} />
+            </div>
+            <div className="col-md-6">
+              <h6>Employee Position's Distribution</h6>
+              <Pie data={getPositionChartData()} />
+            </div>
+          </div>
         </div>
-        <div>
+        <div className="col-md-12 mt-4">
+          <h6>Salary Distribution</h6>
           <Scatter data={{ datasets: getSalaryBoxPlotData() }} options={boxPlotOptions} />
         </div>
       </div>
     </div>
+
   );
 };
 

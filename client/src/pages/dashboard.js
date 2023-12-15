@@ -3,10 +3,9 @@ import EmployeeCharts from '../components/EmployeeCharts'
 
 const Dashboard = () => {
   return (
-    <div>
-        <h1>Dashboard</h1>
+    <div className='container-fluid mt-5'>
+        <h2>Welcome to the Employee Dashboard!</h2>
         <EmployeeCharts />
-        
     </div>
   )
 }
