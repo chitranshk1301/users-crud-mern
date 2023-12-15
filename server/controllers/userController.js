@@ -32,6 +32,7 @@ const createUser = async (req, res) => {
         name: req.body.name,
         department: req.body.department,
         email: req.body.email,
+        age: req.body.age,
         phone: req.body.phone,
         position: req.body.position,
         salary: req.body.salary
@@ -79,6 +80,7 @@ const updateUserById = async (req, res) => {
             name: req.body.name,
             department: req.body.department,
             email: req.body.email,
+            age: req.body.age,
             phone: req.body.phone,
             position: req.body.position,
             salary: req.body.salary

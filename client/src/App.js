@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Dashboard from "./pages/dashboard";
 import Employees from "./pages/employees";
+import CreateEmployee from "./pages/createEmployee";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -13,8 +13,8 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Dashboard />} />
           <Route path="/employees" exact element={<Employees />} />
+          <Route path="/create-employee" exact element={<CreateEmployee />} />
         </Routes>
-        <Footer />
       </div>
   );
 }
