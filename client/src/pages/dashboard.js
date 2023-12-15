@@ -1,6 +1,7 @@
 import React from 'react'
 import EmployeeCharts from '../components/EmployeeCharts'
 
+
 const Dashboard = () => {
   return (
     <div className='container-fluid mt-5'>
