@@ -61,7 +61,7 @@ const EmployeeDetails = () => {
                     </div>
                 </div>
             </div>
-            <Link to={{ pathname: `/employee/${id}/update`, state: { employee } }} className="btn btn-primary">
+            <Link to={`/employee/${id}/update`} className="btn btn-primary">
                 Update Details
             </Link>
         </div>

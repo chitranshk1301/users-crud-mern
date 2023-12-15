@@ -1,22 +1,33 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const UpdateForm = () => {
-    const history = useNavigate();
-    const location = useLocation();
-    const { state } = location;
-    const { employee } = state;
+    const { id } = useParams();
+    const navigation = useNavigate();
 
     const [formData, setFormData] = useState({
-        name: employee.name,
-        age: employee.age,
-        department: employee.department,
-        position: employee.position,
-        email: employee.email,
-        phone: employee.phone,
-        salary: employee.salary,
+        name: '',
+        age: '',
+        department: '',
+        position: '',
+        email: '',
+        phone: '',
+        salary: '',
     });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:3001/api/user/${id}`);
+                setFormData(response.data);
+            } catch (error) {
+                console.error('Error fetching employee data:', error.message);
+            }
+        };
+
+        fetchData();
+    }, [id]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -30,8 +41,8 @@ const UpdateForm = () => {
         e.preventDefault();
 
         try {
-            await axios.put(`http://localhost:3001/api/user/${employee.id}`, formData);
-            history.push(`/employee/${employee.id}`);
+            await axios.put(`http://localhost:3001/api/user/${id}`, formData);
+            navigation(`/employee/${id}`);
         } catch (error) {
             console.error('Error updating employee:', error.message);
         }
